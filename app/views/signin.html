@@ -1,0 +1,21 @@
+<div>
+  <h1>SignIn</h1>
+  <br /><br /><br />
+      <div>
+        <input type="text" placeholder="Name" ng-model = "newUser.name" />
+        <input type="password" placeholder="Password" ng-model = "newUser.password" />
+        <button ng-click="findUser();">Find</button>
+      </div>
+
+
+    <ul>
+      <li ng-repeat="user in existingUsersObject" ng-bind="user.name + '  testString'"></li>
+    </ul>
+</div>
+
+
+
+    <a href="#/signup">signup</a>
+
+
+

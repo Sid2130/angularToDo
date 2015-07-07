@@ -1,0 +1,58 @@
+<div>
+
+  <div class="form-container closed" id="new-task-form">
+    <div class="task-form-wrapper">
+      <form ng-submit="addTask();">
+        <input type="text" placeholder="Title" ng-model = "task.title" class="input-fields" required/><br><br>
+        <textarea placeholder="About Task" ng-model = "task.description" class="input-fields" required></textarea><br>
+        <div class="priority-container">
+          <div class="priority-lablel pull-left">Priority : </div>
+          <div class="priority-indicator-wrapper pull-right">
+            <div class="pull-right task-priority-indicator pr pr5"  ng-click="setPriority('5')" ></div>
+            <div class="pull-right task-priority-indicator pr pr4"  ng-click="setPriority('4')" ></div>
+            <div class="pull-right task-priority-indicator pr pr3"  ng-click="setPriority('3')" ></div>
+            <div class="pull-right task-priority-indicator pr pr2"  ng-click="setPriority('2')" ></div>
+            <div class="pull-right task-priority-indicator pr pr1"  ng-click="setPriority('1')" ></div>
+          </div>
+          <div class="clearfix"></div>
+        </div>       
+        <input type="checkbox" ng-model="task.status" class="custom-checkbox" id="checkbox-done" ng-init="task.status=false" ng-true-value="'complete'" ng-false-value="'incomplete'">
+        <label for="checkbox-done" class="custom-checkbox-label"><span>Done</span></label>
+        <button class="button" ng-click="">Add Task</button>
+      </form>
+    </div>
+  </div>
+  <div class="form-overlay closed" ng-click="closeForm()"></div>
+
+
+  <div class="tasks-card-container">
+    <div class="top-bar">
+      <div class="add-task round-button" onclick="app.openForm()" id="form-open-close-button"><i class="fa fa-plus"></i></div>
+    </div>
+      <div class="task-cards-wrapper">
+        <div ng-repeat="taskObject in tasksObjects track by $index" class="col-xs-12 col-sm-6 col-md-3 col-xl-2">
+          <div ng-class="taskObject.priorityClass" class="task-card">
+            <div class="task-title" ng-bind="taskObject.title"></div>
+            <div class="task-description" ng-bind="taskObject.description"></div>
+            <div class="task-priority-indicator"  ng-repeat="i in taskPriorityIndidcator(taskObject.priority) track by $index" ></div>
+            <div class="clearfix"></div>
+            <div class="action-panel">
+              <div class="action-button pull-left"><i class="fa fa-trash-o"></i></div>
+              <div class="action-button pull-left"><i class="fa fa-pencil"></i></div>
+              <input type="checkbox" class="custom-checkbox" ng-true-value="'complete'" ng-false-value="'incomplete'"  ng-attr-id="{{ 'task-id-'+taskObject.taskId }}">
+              <label class="task-finished-button pull-right" ng-attr-for="{{ 'task-id-'+taskObject.taskId }}"></label>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+
+
+
+
+
+
+

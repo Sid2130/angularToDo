@@ -1,0 +1,25 @@
+<div>
+    <h1>View One</h1>
+    <!-- <div  ng-controller="mainControllerOne"> -->
+    <div>
+       Name : &nbsp; &nbsp; <input type="text" ng-model="filter.search">
+       <div>
+       	<br/><br/>
+       		{{testName}}
+       </div>
+       <br/><br/>
+       <li ng-repeat="friend in friends | filter: filter.search | orderBy:'name'">{{friend.name}} - {{friend.phone}} - {{friend.age}}</li>
+
+      <br /><br /><br />
+      <div>
+        <input type="text" placeholder="Name" ng-model = "newFriend.name" />
+        <input type="text" placeholder="Contact" ng-model = "newFriend.phone" />
+        <input type="text" placeholder="Age" ng-model = "newFriend.age" />
+        <button ng-click="addRecord();">Add Record</button>
+      </div>
+    </div>
+
+    <a href="#/view2">View-two</a>
+</div>
+
+

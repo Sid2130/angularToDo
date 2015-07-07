@@ -1,0 +1,127 @@
+@font-face {
+    font-family: "Aller";
+    src: url("../fonts/Aller/Aller_Rg.ttf");
+}
+@font-face {
+    font-family: "Aller";
+    src: url("../fonts/Aller/Aller_Lt.ttf");
+    font-weight: lighter;
+}
+@font-face {
+    font-family: "Aller";
+    src: url("../fonts/Aller/Aller_Bd.ttf");
+    font-weight: bold;
+}
+
+
+@font-face {
+    font-family: "OpenSans";
+    src: url("../fonts/OpenSans/OpenSans-Regular.ttf");
+}
+@font-face {
+    font-family: "OpenSans";
+    src: url("../fonts/OpenSans/OpenSans-Light.ttf");
+    font-weight: lighter;
+}
+@font-face {
+    font-family: "OpenSans";
+    src: url("../fonts/OpenSans/OpenSans-Bold.ttf");
+    font-weight: bold;
+}
+
+
+
+
+body{ margin: 0px; font-family: "Aller"; background: #fcfdfd; overflow: hidden;}
+
+.top-bar{ width: 100%; padding: 10px 15px; border-bottom: 1px dashed #ddd; height: 50px;}
+.round-button { width: 30px; height: 30px; border-radius: 50%; border: 1px solid #bbb; text-align: center; color: #999; font-size: 19px; cursor: pointer;}
+
+.add-task{padding-top: 1px;  transition: all 0.5s ease; z-index: 120; transform: rotate(0deg); position: relative;}
+.add-task:hover{ background: #2ecc71; color: #fff; border: 1px solid #27ae60;}
+
+.close-button { position: absolute; top:10px; left: -50px; z-index: 120; transform: rotate(45deg);   padding-top: 1px;  transition: all 0.5s ease;}
+.close-button:hover{ background: #e74c3c;; color: #fff; border: 1px solid #c0392b;}
+
+.priorityOne{background: #e74c3c;}
+.priorityTwo{background: #d35400;}
+.priorityThree{background: #f39c12;}
+.priorityFour{background: #3498db;}
+.priorityFive{background: #2ecc71;}
+
+
+
+
+.view-wrapper.closed{margin-left: 0px; transition: all 0.5s ease;}
+.view-wrapper{margin-left: 350px; transition: all 0.5s ease;}
+
+.form-overlay{ width: 100vw; height: 100vh; background: rgba(255,255,255,0.8); position:fixed; left: 0; top: 0;   z-index: 90; transition: all 0.5s ease;}
+.form-overlay.closed{ left: -100vw; top: 0; transition: all 0.5s ease;}
+.form-container{ position: relative; width: 350px; height: 100vh; position: fixed; padding: 100px 20px; background: #f9f9f9; border-right: 1px solid #bbb; z-index: 100; left: 0; top: 0; transition: all 0.5s ease;}
+.form-container.closed{left: -350px; top: 0; transition: all 0.5s ease;}
+
+.form-container .task-form-wrapper{ padding: 10px; border: 1px solid #bbb; border-radius: 5px; box-shadow: 0px 2px 5px -2px #666;   background: #fff; position: relative;}
+.form-container .task-priority-indicator{ border: 1px solid #999; cursor: pointer;}
+
+
+.tasks-card-container{height: 100vh; width: 100vw; position: relative;}
+.tasks-card-container .task-cards-wrapper{ padding-top: 20px; }
+.task-card{ color: #fff; padding: 10px; border-radius: 2px; box-shadow: 0px 2px 5px -2px #666; position: relative; margin-bottom: 25px; min-height: 120px;}
+.task-card .task-title{ font-size: 20px; margin-bottom: 5px;}
+.task-card .task-description{ font-size: 14px; margin-bottom: 5px;}
+
+.task-card .action-panel{ width: 100%; border-top: 1px solid rgba(0,0,0,0.15); margin-top: 10px; position: relative;   padding-top: 5px; transition: all 0.5s ease;}
+
+
+.task-priority-indicator{ display: inline-block; width: 12px; height: 12px; border-radius: 50%; background-color: #fff; margin-right: 3px;}
+
+.input-fields{ padding: 5px 5px 2px; font-size: 15px; width: 100%; border: 0px; border-bottom: 1px solid #ddd; transition: all 0.5s ease;}
+textarea.input-fields{height: 100px; resize: none;}
+.input-fields:focus{ color: #2980b9; border-bottom: 1px solid #2980b9; transition: all 0.5s ease; outline: none;}
+
+.pr, .pr:hover{transition: all 0.5s ease;}
+
+.pr5:hover{ background: #2ecc71 !important;}
+.pr5:hover ~ div{ background: #2ecc71 !important;}
+
+.pr4:hover{ background: #3498db !important;}
+.pr4:hover ~ div:not(.pr5){ background: #3498db !important;}
+
+.pr3:hover{ background: #f39c12 !important;}
+.pr3:hover ~ div:not(.pr5):not(.pr4){ background: #f39c12 !important;}
+
+.pr2:hover{ background: #d35400 !important;}
+.pr2:hover + .pr1{ background: #d35400 !important;}
+
+.pr1:hover{background: #e74c3c !important;}
+
+
+
+.button {width: 100%; color: #fff; background-color: #3498db; border: 1px solid #3498db; padding: 5px; border-radius: 5px; font-size: 16px; transition: all 0.5s ease; outline: none; }
+.button:hover { background: #2980b9; transition: all 0.5s ease; }
+
+input[type="checkbox"].custom-checkbox{ position: absolute; left: -999999px;}
+.custom-checkbox-label{ font-weight: normal; cursor: pointer;}
+.custom-checkbox-label span{   display: block; margin-top: -6px; float: left; margin-top: 1px;}
+
+.task-form-wrapper input[type="checkbox"].custom-checkbox:checked + label{ color: #3498db; }
+.task-form-wrapper input[type="checkbox"].custom-checkbox+ label:before{ display: block; float: left; content: ""; margin-right: 10px;   margin-top: 3px; transition: all 0.5s ease; width: 15px; height: 15px; border: 1px solid #999; border-radius: 2px; font-size: 11px; padding-left: 1px;}
+.task-form-wrapper input[type="checkbox"].custom-checkbox:checked+ label:before{ font-family: 'FontAwesome'; content: "\f00c"; border: 1px solid #3498db; margin-right: 10px; transition: all 0.5s ease; width: 15px; height: 15px; background-color: #3498db; color: #fff; font-size: 11px; padding-left: 1px;} 
+
+
+
+.task-finished-button{ color: rgba(0,0,0,0.5); transition: all 0.25s ease; cursor: pointer; font-size: 12px; font-weight: 400; font-style: italic; margin-bottom: 0px; }
+.task-finished-button:hover{ color: #fff; transition: all 0.25s ease;}
+.task-card:hover .task-finished-button{ }
+
+
+.task-card input[type="checkbox"].custom-checkbox + label:after{content: "Mark as Done"; transition: all 0.5s ease; margin-top: 2px; font-size: 13px; display: block; float: right; }
+.task-card input[type="checkbox"].custom-checkbox + label:before{ display: block; float: left; content: ""; transition: all 0.5s ease; width: 15px; height: 15px; font-size: 14px;}
+
+.task-card input[type="checkbox"].custom-checkbox:checked + label:after{content: "Done"; transition: all 0.5s ease; font-size: 13px; margin-top: 2px; display: block; float: left; }
+.task-card input[type="checkbox"].custom-checkbox:checked+ label:before{ font-family: 'FontAwesome'; content: "\f058"; transition: all 0.5s ease; color: rgba(0,0,0,0.5); font-size: 14px; font-style: normal; padding-left: 1px;} 
+
+
+.action-button { height: 20px; width: 20px; transition: all 0.5s ease; color: rgba(0,0,0,0.5); font-size: 14px; text-align: center; cursor: pointer; margin-right: 5px; }
+.action-button:hover{ color: #fff; transition: all 0.5s ease;}
+
