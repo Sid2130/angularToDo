@@ -65,10 +65,10 @@ body{ margin: 0px; font-family: "Aller"; background: #fcfdfd; overflow: hidden;}
 
 
 .tasks-card-container{height: 100vh; width: 100vw; position: relative;}
-.tasks-card-container .task-cards-wrapper{ padding-top: 20px; }
+.tasks-card-container .task-cards-wrapper{ padding-top: 20px; overflow: auto; }
 .task-card{ color: #fff; padding: 10px; border-radius: 2px; box-shadow: 0px 2px 5px -2px #666; position: relative; margin-bottom: 25px; min-height: 120px;}
 .task-card .task-title{ font-size: 20px; margin-bottom: 5px;}
-.task-card .task-description{ font-size: 14px; margin-bottom: 5px;}
+.task-card .task-description{ font-size: 14px; margin-bottom: 5px; word-wrap: break-word;}
 
 .task-card .action-panel{ width: 100%; border-top: 1px solid rgba(0,0,0,0.15); margin-top: 10px; position: relative;   padding-top: 5px; transition: all 0.5s ease;}
 
@@ -119,7 +119,7 @@ input[type="checkbox"].custom-checkbox{ position: absolute; left: -999999px;}
 .task-card input[type="checkbox"].custom-checkbox + label:before{ display: block; float: left; content: ""; transition: all 0.5s ease; width: 15px; height: 15px; font-size: 14px;}
 
 .task-card input[type="checkbox"].custom-checkbox:checked + label:after{content: "Done"; transition: all 0.5s ease; font-size: 13px; margin-top: 2px; display: block; float: left; }
-.task-card input[type="checkbox"].custom-checkbox:checked+ label:before{ font-family: 'FontAwesome'; content: "\f058"; transition: all 0.5s ease; color: rgba(0,0,0,0.5); font-size: 14px; font-style: normal; padding-left: 1px;} 
+.task-card input[type="checkbox"].custom-checkbox:checked+ label:before{ font-family: 'FontAwesome'; content: "\f058"; transition: all 0.5s ease; font-size: 13px; font-style: normal; padding-left: 1px; padding-top: 1px;} 
 
 
 .action-button { height: 20px; width: 20px; transition: all 0.5s ease; color: rgba(0,0,0,0.5); font-size: 14px; text-align: center; cursor: pointer; margin-right: 5px; }

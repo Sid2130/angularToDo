@@ -1,7 +1,7 @@
 var Controllers = {};
 
 
-Controllers.taskController = function($scope, $compile, tasksFactory){
+Controllers.taskController = function($scope, $compile, $timeout, tasksFactory){
 	
     var priorityClassArray = ["priorityOne","priorityTwo","priorityThree","priorityFour","priorityFive"];
     $scope.tasksObjects = tasksFactory.getData();
@@ -30,12 +30,12 @@ Controllers.taskController = function($scope, $compile, tasksFactory){
         if($scope.tasksObjects === null){
             $scope.tasksObjects = [];
         }
-        //$scope.tasksObjects.push(objectToSend);
-        //$scope.$apply();
-        //app.addTaskCardInView(objectToSend);
+        
 
         console.log(JSON.stringify($scope.tasksObjects));
-         $scope.tasksObjects = tasksFactory.getData();
+        $scope.tasksObjects = tasksFactory.getData();
+
+        $scope.initializeMasonry();
     }
 
     $scope.taskPriorityIndidcator = function(number){
@@ -45,6 +45,17 @@ Controllers.taskController = function($scope, $compile, tasksFactory){
    
 
 
+    $scope.initializeMasonry = function( ) {
+        console.log("efwfwfwfwf");
+       $timeout(function(){
+           $('.grid').masonry({
+            itemSelector: '.grid-item',
+            isAnimated: true
+            //columnWidth: 200
+        }); 
+        }, 500);  
+    }
+    
     // $scope.openForm = function(){
     //     $('#view-container, #new-task-form, .form-overlay').removeClass('closed');
     //     $('#form-open-close-button').removeClass('add-task').addClass('close-button').attr("ng-click","closeForm()");

@@ -1,5 +1,16 @@
 var app = {};
 
+$(document).ready(function(){
+    $('.grid').masonry({
+     
+     itemSelector: '.grid-item'
+    // isAnimated: true,
+     //columnWidth: 200
+   });
+
+
+});
+
 
 app.changeStatus = function(htmlObject){
     if( $(htmlObject).is(':checked') ){

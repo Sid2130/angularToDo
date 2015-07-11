@@ -1,0 +1,13 @@
+<div ng-class="taskData.priorityClass" class="task-card">
+  <div class="task-title" ng-bind="taskData.title"></div>
+  <div class="task-description" ng-bind="taskData.description"></div>
+  <div class="task-priority-indicator"  ng-repeat="i in taskPriorityIndidcator(taskData.priority) track by $index" ></div>
+  <div class="clearfix"></div>
+  <div class="action-panel">
+    <div class="action-button pull-left"><i class="fa fa-trash-o"></i></div>
+    <div class="action-button pull-left"><i class="fa fa-pencil"></i></div>
+    <input type="checkbox" class="custom-checkbox" ng-true-value="'complete'" ng-false-value="'incomplete'"  ng-attr-id="{{ 'task-id-'+taskData.taskId }}">
+    <label class="task-finished-button pull-right" ng-attr-for="{{ 'task-id-'+taskData.taskId }}"></label>
+    <div class="clearfix"></div>
+  </div>
+</div>
