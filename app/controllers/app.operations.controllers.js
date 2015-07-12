@@ -1,21 +1,13 @@
 var Controllers = {};
 
 
-Controllers.taskController = function($scope, $compile, $timeout, tasksFactory){
-	
+Controllers.taskController = function($scope, $timeout, tasksFactory){
+    
     var priorityClassArray = ["priorityOne","priorityTwo","priorityThree","priorityFour","priorityFive"];
     $scope.tasksObjects = tasksFactory.getData();
     
     $scope.priority = 5;
-    var tasksObjectsLength = '';
-    
-    if($scope.tasksObjects === null){
-        tasksObjectsLength = 0;
-    }
-    else{
-        tasksObjectsLength = $scope.tasksObjects.length;
-    }
-
+    var tasksObjectsLength = $scope.tasksObjects.length;
     if(tasksObjectsLength > 0){
         $scope.taskId = $scope.tasksObjects[tasksObjectsLength-1].taskId + 1;
     }
@@ -32,18 +24,25 @@ Controllers.taskController = function($scope, $compile, $timeout, tasksFactory){
         objectToSend.status = $scope.task.status;
         objectToSend.taskId = $scope.taskId++;
 
-        
-        
         tasksFactory.postData(objectToSend);
         if($scope.tasksObjects === null){
             $scope.tasksObjects = [];
         }
         
-
         console.log(JSON.stringify($scope.tasksObjects));
-        $scope.tasksObjects = tasksFactory.getData();
-        $scope.addNewTaskCard(objectToSend);
-        $scope.initializeMasonry();
+        //$scope.tasksObjects = tasksFactory.getData();
+
+        // $scope.$apply(function() {
+        //     console.log("apply");
+            
+        //      $scope.initializeMasonry();
+        // });
+
+        $timeout(function(){
+           var reference = $('.grid .grid-item').last();
+            $('.grid').masonry("appended", reference);
+        }, 00); 
+       
     }
 
     $scope.taskPriorityIndidcator = function(number){
@@ -51,22 +50,16 @@ Controllers.taskController = function($scope, $compile, $timeout, tasksFactory){
         return new Array(number);
     }
    
-    $scope.addNewTaskCard = function(objectReceived){
-        //$('.task-cards-wrapper.grid').append('<div class="col-xs-12 col-sm-6 col-md-3 col-xl-2 task-card-element grid-item"><div data-task-card-layout="" task-data="'+objectReceived+'"></div></div>');
-    
-        var lastCard = $('.task-cards-wrapper.grid .griditem').last();
-        $('.task-cards-wrapper.grid').masonry('appended', parent);
-    };
+
 
     $scope.initializeMasonry = function( ) {
-        
-       $timeout(function(){
         console.log("efwfwfwfwf");
+       $timeout(function(){
            $('.grid').masonry({
-                itemSelector: '.grid-item',
-                isAnimated: true
-                //columnWidth: 200
-            }); 
+            itemSelector: '.grid-item',
+            isAnimated: true
+            //columnWidth: 200
+        }); 
         }, 500);  
     }
     
