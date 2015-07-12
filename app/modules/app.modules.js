@@ -1,1 +1,1 @@
-var angularApp = angular.module("angularApp", ['ngRoute','app.taskCard']);
+var angularApp = angular.module("angularApp", ['ngRoute', 'ngSanitize', 'app.taskCard']);

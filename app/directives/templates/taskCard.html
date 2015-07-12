@@ -1,6 +1,6 @@
 <div ng-class="taskData.priorityClass" class="task-card">
   <div class="task-title" ng-bind="taskData.title"></div>
-  <div class="task-description" ng-bind="taskData.description"></div>
+  <div class="task-description" ng-bind-html="taskData.description"></div>
   <div class="task-priority-indicator"  ng-repeat="i in taskPriorityIndidcator(taskData.priority) track by $index" ></div>
   <div class="clearfix"></div>
   <div class="action-panel">

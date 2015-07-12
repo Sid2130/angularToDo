@@ -1,15 +1,26 @@
 var app = {};
 
 $(document).ready(function(){
-    $('.grid').masonry({
-     
-     itemSelector: '.grid-item'
-    // isAnimated: true,
-     //columnWidth: 200
-   });
-
-
+   //  $('.grid').masonry({
+   //  itemSelector: '.grid-item'
+   //  // isAnimated: true,
+   //   //columnWidth: 200
+   // });
+   //app.initialize();
 });
+
+
+app.initialize = function(){
+    
+    var menuBarheight = $(".display-content-area .top-bar").height();
+    var fullScreenHeight = window.innerHeight;
+    var reqHeight = fullScreenHeight-menuBarheight;
+    $(".tasks-card-container").css("height",reqHeight+"px");
+    console.log(reqHeight);
+
+    $(".tasks-card-container").niceScroll();
+}.bind(app);
+
 
 
 app.changeStatus = function(htmlObject){
@@ -22,8 +33,17 @@ app.changeStatus = function(htmlObject){
 }.bind(app);
 
 
-app.addTaskCardInView = function(dataObject){
-   
+app.openFilterBar = function(){
+    if( $(".top-bar.filter-bar").hasClass("open") ){
+        $(".top-bar.filter-bar").removeClass("open");
+        $('.form-overlay').addClass('closed');
+    }
+    else{
+        $(".top-bar.filter-bar").addClass("open");
+        
+        $('.form-overlay').removeClass('closed');
+    }
+    
 }.bind(app);
 
 

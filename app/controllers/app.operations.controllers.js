@@ -18,6 +18,7 @@ Controllers.taskController = function($scope, $timeout, tasksFactory){
     $scope.addTask = function(){
         var objectToSend = {};
         objectToSend.title = $scope.task.title;
+        //objectToSend.description = $scope.task.description.replace(/\n/g, "<br/>");
         objectToSend.description = $scope.task.description;
         objectToSend.priority = $scope.priority;
         objectToSend.priorityClass = priorityClassArray[($scope.priority - 1)];
@@ -30,19 +31,20 @@ Controllers.taskController = function($scope, $timeout, tasksFactory){
         }
         
         console.log(JSON.stringify($scope.tasksObjects));
-        //$scope.tasksObjects = tasksFactory.getData();
+        $scope.tasksObjects = tasksFactory.getData();
 
-        // $scope.$apply(function() {
-        //     console.log("apply");
-            
-        //      $scope.initializeMasonry();
-        // });
+        
 
         $timeout(function(){
            var reference = $('.grid .grid-item').last();
             $('.grid').masonry("appended", reference);
         }, 00); 
-       
+
+        $('#task-description, #task-title').val('');
+        $('.task-priority-indicator').removeAttr("style");
+        app.closeForm();
+
+        $scope.priority = 5;
     }
 
     $scope.taskPriorityIndidcator = function(number){
@@ -50,9 +52,13 @@ Controllers.taskController = function($scope, $timeout, tasksFactory){
         return new Array(number);
     }
    
+    $scope.$on('$viewContentLoaded', function(){
+        //Here your view content is fully loaded !!
+        app.initialize()
+    });
 
 
-    $scope.initializeMasonry = function( ) {
+    $scope.initializeMasonry = function() {
         console.log("efwfwfwfwf");
        $timeout(function(){
            $('.grid').masonry({
