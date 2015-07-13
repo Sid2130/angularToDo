@@ -5,9 +5,17 @@ Controllers.taskController = function($scope, $timeout, tasksFactory){
     
     var priorityClassArray = ["priorityOne","priorityTwo","priorityThree","priorityFour","priorityFive"];
     $scope.tasksObjects = tasksFactory.getData();
-    
+    var tasksObjectsLength = '';
     $scope.priority = 5;
-    var tasksObjectsLength = $scope.tasksObjects.length;
+
+    if($scope.tasksObjects === null){
+    	var tasksObjectsLength = 0;
+    }
+    else{
+    	tasksObjectsLength = $scope.tasksObjects.length;
+    }
+    
+
     if(tasksObjectsLength > 0){
         $scope.taskId = $scope.tasksObjects[tasksObjectsLength-1].taskId + 1;
     }
@@ -18,8 +26,8 @@ Controllers.taskController = function($scope, $timeout, tasksFactory){
     $scope.addTask = function(){
         var objectToSend = {};
         objectToSend.title = $scope.task.title;
-        //objectToSend.description = $scope.task.description.replace(/\n/g, "<br/>");
-        objectToSend.description = $scope.task.description;
+        objectToSend.description = $scope.task.description.replace(/\n/g, "<br/>");
+        //objectToSend.description = $scope.task.description;
         objectToSend.priority = $scope.priority;
         objectToSend.priorityClass = priorityClassArray[($scope.priority - 1)];
         objectToSend.status = $scope.task.status;
