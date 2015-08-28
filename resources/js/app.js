@@ -51,7 +51,12 @@ app.openFilterBar = function(){
 
 app.openForm = function(){
     $('#view-container, #new-task-form, .form-overlay').removeClass('closed');
-    $('#form-open-close-button').removeClass('add-task').addClass('close-button').attr("onclick","app.closeForm()");
+    
+
+    setTimeout(function(){
+   //wait for card1 flip to finish and then flip 2
+	   $('#form-open-close-button').addClass('close-button').attr("onclick","app.closeForm()");
+	}, 500);
 }
 
 app.closeForm = function(){
